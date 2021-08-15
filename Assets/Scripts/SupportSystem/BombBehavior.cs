@@ -28,6 +28,7 @@ public class BombBehavior : MonoBehaviour
     private void momentumForce()
     {
         rb.AddRelativeForce(0, 0, momentumSpeed);
+
     }
 
     //Tilt Behavior

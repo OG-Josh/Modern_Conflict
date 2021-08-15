@@ -15,10 +15,7 @@ public class SupManager : MonoBehaviour
     [Header("Destruct timer on exit state:")]
     public float destructTimer = 2f;
 
-    //Implement multiple types of status such as carpet bombing, air drop, MOAB style bomb, etc
-    //use enum status to establish this in prefab inspector menu to easily alter data
-
-    [Header("Private variables below after setting conditions")]
+    [HideInInspector]
     public bool isCompleted = false;
     //Counter to call method once rather than 1+ times
     private bool startClearing = false;
