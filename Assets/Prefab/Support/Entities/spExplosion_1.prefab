@@ -9687,7 +9687,7 @@ GameObject:
   - component: {fileID: 3631822397298903474}
   - component: {fileID: 3631822397317257074}
   - component: {fileID: 3631822397317225874}
-  - component: {fileID: 4983828321031857808}
+  - component: {fileID: -6069288509420892504}
   m_Layer: 0
   m_Name: spExplosion_1
   m_TagString: Untagged
@@ -9703,7 +9703,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3631822397298490962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -34.63, y: 5.74, z: 12.76}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3631822397298946322}
@@ -14524,7 +14524,7 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &4983828321031857808
+--- !u!114 &-6069288509420892504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14536,8 +14536,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eadd941796e61e45bae3c4a51dc4723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ManualControl: 1
-  destructTimer: 1.5
+  timer: 3
+  disableObject: 1
+  destroyObject: 0
 --- !u!1 &3631822397298648358
 GameObject:
   m_ObjectHideFlags: 0

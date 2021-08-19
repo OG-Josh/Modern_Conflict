@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaneTransform : MonoBehaviour
+public class PlaneTransform : MonoBehaviour//, IPooledObject
 {
     public float speed = 10.0f;
 
-    private void Update()
+    public void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
+
+    
 }

@@ -4965,6 +4965,7 @@ GameObject:
   - component: {fileID: 5065587610168376990}
   - component: {fileID: 5065587610183580126}
   - component: {fileID: 5065587610181841790}
+  - component: {fileID: -8563227821624667892}
   m_Layer: 0
   m_Name: MoabEffect
   m_TagString: Untagged
@@ -9914,6 +9915,21 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-8563227821624667892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5065587610168087230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eadd941796e61e45bae3c4a51dc4723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 3.5
+  disableObject: 1
+  destroyObject: 0
 --- !u!1 &5065587610168115810
 GameObject:
   m_ObjectHideFlags: 0

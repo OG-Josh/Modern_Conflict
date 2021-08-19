@@ -6,13 +6,14 @@ public class TestInput : MonoBehaviour
 {
     //public Transform BayDoor;
     //public GameObject Mortar;
-    //private void Update()
-    //{
-    //    if(Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        Debug.Log("Space was pressed!");
-    //        GameObject Bomb = Instantiate(Mortar, BayDoor.transform.position, BayDoor.rotation);
-    //        Debug.Log("Bomb aways!");
-    //    }
-    //}
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Space was pressed!");
+            gameObject.SetActive(false);
+            //GameObject Bomb = Instantiate(Mortar, BayDoor.transform.position, BayDoor.rotation);
+            Debug.Log("Bomb aways!");
+        }
+    }
 }

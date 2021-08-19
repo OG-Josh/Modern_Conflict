@@ -5,12 +5,14 @@ using UnityEngine;
 public class AttackSystem : MonoBehaviour
 {
     private SupManager sP;
+    private objectPool objectPooler;
 
     [Header("Test Input, delete when finished setting condition")]
     public bool dropBomb = false;
 
     [Header("Behavior Settings:")]
-    public GameObject ammoPrefab;
+    //public GameObject ammoPrefab;
+    public string attackTag;
     public Transform[] startLaunch;
     public bool scatterDrop = false;
     public int ammo = 5;
@@ -20,6 +22,11 @@ public class AttackSystem : MonoBehaviour
     private void Awake()
     {
         sP = GetComponent<SupManager>();
+    }
+
+    private void Start()
+    {
+        objectPooler = objectPool.Instance;
     }
 
     private void Update()
@@ -51,7 +58,8 @@ public class AttackSystem : MonoBehaviour
     IEnumerator InitiateDrop()
     {
         attackReady = false;
-        GameObject Bomb = Instantiate(ammoPrefab, startLaunch[0].transform.position, startLaunch[0].rotation);        
+        //GameObject Bomb = Instantiate(ammoPrefab, startLaunch[0].transform.position, startLaunch[0].rotation);        
+        objectPooler.SpawnFromPool(attackTag, startLaunch[0].transform.position, startLaunch[0].rotation); ;
         ammo--;
         yield return new WaitForSeconds(dropRate);
         attackReady = true;
@@ -64,7 +72,8 @@ public class AttackSystem : MonoBehaviour
             if(attackReady == true)
             {
                 attackReady = false;
-                GameObject Bomb = Instantiate(ammoPrefab, startLaunch[i].transform.position, startLaunch[i].rotation);
+                //GameObject Bomb = Instantiate(ammoPrefab, startLaunch[i].transform.position, startLaunch[i].rotation);
+                objectPooler.SpawnFromPool(attackTag, startLaunch[i].transform.position, startLaunch[i].rotation); ;
                 ammo--;
                 yield return new WaitForSeconds(dropRate);
                 attackReady = true;

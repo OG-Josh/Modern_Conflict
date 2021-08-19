@@ -2,24 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(destroySelf))]
-public class BombBehavior : MonoBehaviour
+public class BombBehavior : MonoBehaviour//, IPooledObject
 {
-    private destroySelf sD;
+    private objectPool objectPooler;
 
     [Header("Bomb Settings:")]
     //Type of explosion when collision hits
-    public GameObject explosionVFX;
-    public float vfxTimer = 1.0f;
+    public string vfxTag;
     private Rigidbody rb;
+    [Space]
     public float momentumSpeed = 5.0f;
+    public float tiltDirection = 75.0f;
     public float tiltSlerp = 1.5f;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
-    private void Update()
+    private void Start()
+    {
+        objectPooler = objectPool.Instance;
+    }
+    private void FixedUpdate()
     {
         tiltBehavior();
         momentumForce();
@@ -34,16 +38,17 @@ public class BombBehavior : MonoBehaviour
     //Tilt Behavior
     private void tiltBehavior()
     {
-        Quaternion target = Quaternion.Euler(80, 0, 0);
-        gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * tiltSlerp);
+        Quaternion target = Quaternion.Euler(tiltDirection, 0, 0);
+        gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, target, /*Time.deltaTime */ tiltSlerp);
     }
 
     protected void OnCollisionEnter(Collision collision)
     {
         //Instantiate explosion and call selfdestruct
-        GameObject VFX = Instantiate(explosionVFX, transform.position, Quaternion.identity);
-        Destroy(VFX, vfxTimer);
-        Destroy(gameObject);
+        //GameObject VFX = Instantiate(explosionVFX, transform.position, Quaternion.identity);
+        objectPooler.SpawnFromPool(vfxTag, transform.position, Quaternion.identity);
+        //Debug.Log("BOOM!");
+        gameObject.SetActive(false);
     }
 
 }
