@@ -19,7 +19,6 @@ public class destroySelf : MonoBehaviour, IPooledObject
     public bool disableObject = false;
     public bool destroyObject = false;
 
-    private bool startScript = false;
     private bool readyState = false;
 
     private void Awake()
@@ -32,12 +31,6 @@ public class destroySelf : MonoBehaviour, IPooledObject
     }
     private void Update()
     {
-        //if(startScript == false)
-        //{
-        //    StartCoroutine(startTimer());
-        
-        //}
-
         checkLoad();
     }
     //Destroy gameobject in scene to keep low load
