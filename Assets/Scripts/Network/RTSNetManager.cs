@@ -14,5 +14,17 @@ using UnityEngine;
 
 public class RTSNetManager : NetworkManager
 {
+    [SerializeField] private GameObject unitSpawner = null;
+    public override void OnServerAddPlayer(NetworkConnection conn)
+    {
+        //player connects
+        base.OnServerAddPlayer(conn);
 
+        //BELOW IS GOOD FOR A HQ START IN AN RTS GAME
+        GameObject unitSpawn = Instantiate(unitSpawner, conn.identity.transform.position, conn.identity.transform.rotation);
+        //Now we got this on the server, we need to communicate this to our network 
+        NetworkServer.Spawn(unitSpawn, conn);
+        //Above will spawn in (show) on all the client and give authority to connected client aka "conn" param of our method
+
+    }
 }

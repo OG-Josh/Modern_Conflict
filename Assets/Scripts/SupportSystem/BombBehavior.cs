@@ -60,4 +60,9 @@ public class BombBehavior : MonoBehaviour//, IPooledObject
         gameObject.SetActive(false);
     }
 
+    private void OnDisable()
+    {
+        rb.velocity = new Vector3(0, 0, 0);
+    }
+
 }

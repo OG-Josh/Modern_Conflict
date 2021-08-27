@@ -10,6 +10,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TestSpawner : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class TestSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && ready == true)
+        if(Mouse.current.rightButton.wasPressedThisFrame)
         {
             StartCoroutine(SpawnSP());
         }
